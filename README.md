@@ -1,24 +1,9 @@
-# Mongo Express React Node Starter Pack
+# Todo MVC
 
-> Create full stack apps with Mongo Express React & Node . Run your client and server with a single command.
+Projects showcase & Management application created using mongo, express, node, react with full CRUD ability.
 
-## Quick Start
+# ScreenShot
 
-```bash
-# Install dependencies for server
-npm install
+<img width="209" alt="screen shot 2019-01-18 at 5 10 04 pm" src="https://user-images.githubusercontent.com/28902787/51420055-fb09e800-1b43-11e9-980a-83a8d0edf6a2.png">
 
-# Install dependencies for client
-npm run client-install
-
-# Run the client & server with concurrently
-npm run dev
-
-# Run the Express server only
-npm run server
-
-# Run the React client only
-npm run client
-
-# Server runs on http://localhost:5000 and client on http://localhost:3000
-```
+**[View Live]()**
