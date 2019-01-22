@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 
 // Routes Requires
-// const name = require("./routes/api/");
+const card = require("./routes/api/card");
 
 const app = express();
 
@@ -12,19 +12,19 @@ const app = express();
 app.use(bodyParser.json());
 
 // DB Config
-// const db = require("./config/keys").mongoURI;
+const db = require("./config/keys").mongoURI;
 
 // Connect to Mongo
-// mongoose
-//   .connect(
-//     db,
-//     { useNewUrlParser: true }
-//   ) // Adding new mongo url parser
-//   .then(() => console.log("MongoDB Connected..."))
-//   .catch(err => console.log(err));
+mongoose
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  ) // Adding new mongo url parser
+  .then(() => console.log("MongoDB Connected..."))
+  .catch(err => console.log(err));
 
 // Use Routes
-// app.use("/api/", );
+app.use("/api/", card);
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {

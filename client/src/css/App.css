@@ -1,10 +1,7 @@
-.energy-img {
-  margin: 0;
-  padding: 0;
-  margin-left: 10%;
+* {
+  font-family: "Courier New", Courier, monospace;
 }
 
-hr {
-  margin: 0;
-  padding: 0;
+span {
+  text-align: center;
 }
