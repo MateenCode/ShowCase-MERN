@@ -32,8 +32,8 @@ router.get("/display", (req, res) => {
     .catch(err => res.json({ statue: false, err }));
 });
 
-// @route   POST api/add
-// @desc    add card
+// @route   PATCH api/update
+// @desc    update card
 // @access  Public
 // router.patch("/update/:id", (req, res) => {
 //   Card.findById(req.params.id)

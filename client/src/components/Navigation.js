@@ -9,7 +9,7 @@ export default class Navigation extends Component {
         <Nav className="ml-auto" navbar>
           <NavItem>
             <NavLink className="Navlink">
-              <i className="icon" className="fas fa-folder-plus  fa-2x" />
+              <i className="icon fas fa-folder-plus  fa-2x" />
             </NavLink>
           </NavItem>
           <NavItem>
@@ -17,7 +17,7 @@ export default class Navigation extends Component {
               className="Navlink"
               href={"https://github.com/MateenCode?tab=repositories"}
             >
-              <i className="icon" className="fab fa-github fa-2x" />
+              <i className="icon fab fa-github fa-2x" />
             </NavLink>
           </NavItem>
         </Nav>
