@@ -1,7 +1,20 @@
 * {
   font-family: "Courier New", Courier, monospace;
 }
+.card-group {
+  margin-bottom: 5%;
+  height: 16em;
+}
+
+.card {
+  width: 25em;
+}
 
 span {
   text-align: center;
+}
+
+.tool-icon {
+  float: right;
+  margin: 0.6em;
 }

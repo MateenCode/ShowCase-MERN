@@ -1,22 +1,21 @@
 import React, { Component } from "react";
 import "./css/App.css";
-import { Container, Row, Col } from "reactstrap";
+import { Provider } from "./context/context";
 
 // Imported Components
-import Navbar from "./components/Navigation";
-
+import Navbar from "./components/layout/Navigation";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import CardList from "./components/CardList";
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
+      <Provider>
         <Navbar />
-        <hr />
-        <span>
-          <h1>ShowCase </h1>
-          <p>Demonstration page to display my work</p>
-        </span>
-        <Container>cards</Container>
-      </React.Fragment>
+        <Header />
+        <CardList />
+        <Footer />
+      </Provider>
     );
   }
 }

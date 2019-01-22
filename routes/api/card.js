@@ -28,28 +28,28 @@ router.post("/add", (req, res) => {
 router.get("/display", (req, res) => {
   Card.find()
     .sort({ date: -1 })
-    .then(card => res.json({ statue: true, card }))
+    .then(card => res.json(card))
     .catch(err => res.json({ statue: false, err }));
 });
 
-// @route   PATCH api/update
+// @route   PUT api/update
 // @desc    update card
 // @access  Public
-// router.patch("/update/:id", (req, res) => {
+// router.put("/update/:id", (req, res) => {
 //   Card.findById(req.params.id)
 //     .then(card => {
+//       card.title = req.body.title;
+//       card.image = req.body.title;
+//       card.description = req.body.title;
+//       card.github = req.body.title;
+//       card.livelink = req.body.title;
 
+//       card.save();
 //     })
-//     // .save()
-//     // .then(card => res.json({ statue: true, card }))
-//     // .catch(err => res.json({ statue: false, err }));
-// });
 
-// (card.title = req.body.title),
-// (card.image = req.body.title),
-// (card.description = req.body.title),
-// (card.github = req.body.title),
-// (card.livelink = req.body.title)
+//     .then(card => res.json({ statue: true, card }))
+//     .catch(err => res.json({ statue: false, err }));
+// });
 
 router.delete("/delete/:id", (req, res) => {
   Card.findById(req.params.id)

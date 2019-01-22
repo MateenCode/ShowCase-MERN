@@ -7,10 +7,20 @@ const reducer = (state, action) => {};
 
 export class Provider extends Component {
   state = {
+    cards: [],
+    edit: false,
     dispatch: action => {
       this.setState(state => reducer(state, action));
     }
   };
+
+  componentDidMount() {
+    axios.get("/api/display").then(res => {
+      this.setState({
+        cards: res.data
+      });
+    });
+  }
 
   render() {
     return (

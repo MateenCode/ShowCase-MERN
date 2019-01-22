@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import "../css/Header.css";
+import "../../css/Header.css";
 import { Navbar, Nav, NavItem, NavLink } from "reactstrap";
 
 export default class Navigation extends Component {
   render() {
     return (
-      <Navbar expand="md">
+      <Navbar expand="sm">
         <Nav className="ml-auto" navbar>
           <NavItem>
             <NavLink className="Navlink">
