@@ -37,16 +37,15 @@ router.get("/display", (req, res) => {
 // @access  Public
 router.put("/update/:id", (req, res) => {
   Card.findById(req.params.id).then(card => {
-    card
-      .updateOne({
-        title: req.body.title,
-        image: req.body.image,
-        description: req.body.description,
-        github: req.body.title,
-        livelink: req.body.title
-      })
-      .then(card => res.json({ statue: true, card }))
-      .catch(err => res.json({ statue: false, err }));
+    // card.update({
+    //   title: req.body.title,
+    //   image: req.body.image,
+    //   description: req.body.description,
+    //   github: req.body.title,
+    //   livelink: req.body.title
+    // });
+    // .then(card => res.json({ statue: true, card }))
+    // .catch(err => res.json({ statue: false, err }));
   });
 });
 
