@@ -35,21 +35,20 @@ router.get("/display", (req, res) => {
 // @route   PUT api/update
 // @desc    update card
 // @access  Public
-// router.put("/update/:id", (req, res) => {
-//   Card.findById(req.params.id)
-//     .then(card => {
-//       card.title = req.body.title;
-//       card.image = req.body.title;
-//       card.description = req.body.title;
-//       card.github = req.body.title;
-//       card.livelink = req.body.title;
-
-//       card.save();
-//     })
-
-//     .then(card => res.json({ statue: true, card }))
-//     .catch(err => res.json({ statue: false, err }));
-// });
+router.put("/update/:id", (req, res) => {
+  Card.findById(req.params.id).then(card => {
+    card
+      .updateOne({
+        title: req.body.title,
+        image: req.body.image,
+        description: req.body.description,
+        github: req.body.title,
+        livelink: req.body.title
+      })
+      .then(card => res.json({ statue: true, card }))
+      .catch(err => res.json({ statue: false, err }));
+  });
+});
 
 router.delete("/delete/:id", (req, res) => {
   Card.findById(req.params.id)

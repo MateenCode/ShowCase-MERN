@@ -1,6 +1,23 @@
 * {
   font-family: "Courier New", Courier, monospace;
 }
+
+/* Header Section  */
+hr {
+  margin: 0;
+  padding: 0;
+}
+
+.Navlink {
+  color: black;
+}
+
+.Navlink:hover {
+  color: black;
+}
+
+/* Card Section  */
+
 .card-group {
   margin-bottom: 5%;
   height: 16em;
@@ -14,6 +31,7 @@ span {
   text-align: center;
 }
 
+/* Footer Section  */
 .tool-icon {
   float: right;
   margin: 0.6em;

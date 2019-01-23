@@ -7,6 +7,7 @@ import Navbar from "./components/layout/Navigation";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import CardList from "./components/CardList";
+
 class App extends Component {
   render() {
     return (
