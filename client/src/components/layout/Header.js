@@ -6,7 +6,7 @@ export default class Header extends Component {
       <React.Fragment>
         <hr />
         <span>
-          <h1>ShowCase </h1>
+          <h1>Mateen Kazia</h1>
           <p>Demonstration page to display my work</p>
         </span>
       </React.Fragment>

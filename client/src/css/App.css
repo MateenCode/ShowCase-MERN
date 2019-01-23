@@ -2,10 +2,21 @@
   font-family: "Courier New", Courier, monospace;
 }
 
+h1 {
+  font-size: 2.5rem;
+  color: #000;
+  font-family: Futura;
+}
+
 /* Header Section  */
 hr {
   margin: 0;
   padding: 0;
+}
+
+.logo {
+  width: 2em;
+  height: 2em;
 }
 
 .Navlink {
@@ -24,15 +35,46 @@ hr {
 }
 
 .card {
-  width: 25em;
+  width: 24em;
+  border: 1px solid #000;
+}
+
+.title {
+  color: #333;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.fa-edit {
+  color: #3498db;
+}
+
+p.card-text {
+  color: #333;
 }
 
 span {
   text-align: center;
 }
 
+.btn-secondary {
+  background-color: #000;
+  border-color: #000;
+}
+
+.btn a:hover {
+  color: #000;
+}
+
 /* Footer Section  */
 .tool-icon {
   float: right;
   margin: 0.6em;
+}
+
+/* @ Media Query */
+@media screen and (max-width: 992px) {
+  .card {
+    height: 17em;
+  }
 }
