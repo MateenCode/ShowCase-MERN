@@ -73,8 +73,10 @@ span {
 }
 
 /* @ Media Query */
+
 @media screen and (max-width: 992px) {
   .card {
     height: 17em;
+    border: none;
   }
 }

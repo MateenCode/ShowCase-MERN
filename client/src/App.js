@@ -6,6 +6,7 @@ import { Provider } from "./context/context";
 import Navbar from "./components/layout/Navigation";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
+import AddModal from "./components/modal/AddModal";
 import CardList from "./components/CardList";
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
       <Provider>
         <Navbar />
         <Header />
+        <AddModal />
         <CardList />
         <Footer />
       </Provider>

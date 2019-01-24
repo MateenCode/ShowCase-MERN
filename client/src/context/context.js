@@ -3,12 +3,19 @@ import axios from "axios";
 
 const Context = React.createContext();
 
-const reducer = (state, action) => {};
+const reducer = (state, action) => {
+  if (action.type === "add") {
+    return {
+      cards: [action.payload, ...state.cards]
+    };
+  } else {
+    return state;
+  }
+};
 
 export class Provider extends Component {
   state = {
     cards: [],
-    edit: false,
     dispatch: action => {
       this.setState(state => reducer(state, action));
     }

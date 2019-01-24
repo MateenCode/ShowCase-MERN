@@ -19,7 +19,7 @@ const CardSchema = new Schema({
     type: String,
     required: true
   },
-  livelink: {
+  liveLink: {
     type: String,
     required: true
   },

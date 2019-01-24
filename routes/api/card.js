@@ -10,10 +10,10 @@ const Card = require("../../models/Card");
 router.post("/add", (req, res) => {
   const newCard = new Card({
     title: req.body.title,
-    image: req.body.title,
-    description: req.body.title,
-    github: req.body.title,
-    livelink: req.body.title
+    image: req.body.image,
+    description: req.body.description,
+    github: req.body.github,
+    liveLink: req.body.liveLink
   });
 
   newCard
