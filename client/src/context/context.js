@@ -8,6 +8,10 @@ const reducer = (state, action) => {
     return {
       cards: [action.payload, ...state.cards]
     };
+  } else if (action.type === "delete") {
+    return {
+      cards: state.cards.filter(card => card._id !== action.payload)
+    };
   } else {
     return state;
   }
@@ -16,6 +20,7 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   state = {
     cards: [],
+    editToggle: false,
     dispatch: action => {
       this.setState(state => reducer(state, action));
     }

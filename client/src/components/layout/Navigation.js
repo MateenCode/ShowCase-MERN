@@ -17,15 +17,13 @@ export default class Navigation extends Component {
   };
 
   addCard = (dispatch, card) => {
-    axios
-      .post("api/add", {
-        title: card.title,
-        image: card.image,
-        description: card.description,
-        github: card.github,
-        liveLink: card.liveLink
-      })
-      .then(() => console.log("add to DB"));
+    axios.post("api/add", {
+      title: card.title,
+      image: card.image,
+      description: card.description,
+      github: card.github,
+      liveLink: card.liveLink
+    });
     dispatch({
       type: "add",
       payload: card
@@ -59,6 +57,7 @@ export default class Navigation extends Component {
                     <NavLink
                       className="Navlink"
                       href={"https://github.com/MateenCode?tab=repositories"}
+                      target="_blank"
                     >
                       <i className="icon fab fa-github fa-2x" />
                     </NavLink>

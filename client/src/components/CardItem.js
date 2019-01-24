@@ -10,34 +10,44 @@ import {
 } from "reactstrap";
 
 export default function CardItem(props) {
-  // console.log(props.card);
+  const { title, image, description, github, liveLink } = props.card;
   return (
     <Card className="card">
       <CardBody>
         <CardTitle className="title">
-          {props.card.title} <i className="far fa-edit float-right" />
+          <Row>
+            <Col> {title} </Col>
+            <Col>
+              <span>
+                <i className="far fa-edit float-right" />
+              </span>
+            </Col>
+          </Row>
         </CardTitle>
 
         <Row>
           <Col>
-            <CardImg src={props.card.image} />
+            <CardImg src={image} />
           </Col>
           <Col>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
+            <CardText>{description}</CardText>
           </Col>
         </Row>
 
         <Row>
           <Col>
-            <i className="far fa-trash-alt text-danger fa-2x" />
+            <span onClick={props.handleDelete}>
+              <i className="far fa-trash-alt text-danger fa-2x" />
+            </span>
           </Col>
           <Col>
             <div className="float-right">
-              <i className="fab fa-github fa-2x mr-3 " />
-              <i className="fas fa-external-link-alt fa-2x " />
+              <a href={github} target="_blank" className="text-dark">
+                <i className="fab fa-github fa-2x mr-3 " />
+              </a>
+              <a href={liveLink} target="_blank" className="text-dark">
+                <i className="fas fa-external-link-alt fa-2x " />
+              </a>
             </div>
           </Col>
         </Row>

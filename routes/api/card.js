@@ -37,18 +37,22 @@ router.get("/display", (req, res) => {
 // @access  Public
 router.put("/update/:id", (req, res) => {
   Card.findById(req.params.id).then(card => {
-    // card.update({
-    //   title: req.body.title,
-    //   image: req.body.image,
-    //   description: req.body.description,
-    //   github: req.body.title,
-    //   livelink: req.body.title
-    // });
-    // .then(card => res.json({ statue: true, card }))
-    // .catch(err => res.json({ statue: false, err }));
+    card
+      .update({
+        title: req.body.title,
+        image: req.body.image,
+        description: req.body.description,
+        github: req.body.title,
+        livelink: req.body.title
+      })
+      .then(card => res.json({ statue: true, card }))
+      .catch(err => res.json({ statue: false, err }));
   });
 });
 
+// @route   DELETE api/delete
+// @desc    delete card
+// @access  Public
 router.delete("/delete/:id", (req, res) => {
   Card.findById(req.params.id)
     .then(todo => todo.remove().then(() => res.json({ success: true })))
