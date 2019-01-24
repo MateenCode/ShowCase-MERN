@@ -1,9 +1,9 @@
-# Todo MVC
+# Showcase
 
 Projects showcase & Management application created using mongo, express, node, react with full CRUD ability.
 
 # ScreenShot
 
-<img width="209" alt="screen shot 2019-01-18 at 5 10 04 pm" src="https://user-images.githubusercontent.com/28902787/51420055-fb09e800-1b43-11e9-980a-83a8d0edf6a2.png">
+<img width="1272" alt="screen shot 2019-01-23 at 9 47 42 pm" src="https://user-images.githubusercontent.com/28902787/51657179-9215dc00-1f58-11e9-83f1-937569952e81.png">
 
 **[View Live]()**

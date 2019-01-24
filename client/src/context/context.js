@@ -12,15 +12,12 @@ const reducer = (state, action) => {
     return {
       cards: state.cards.filter(card => card._id !== action.payload)
     };
-  } else {
-    return state;
   }
 };
 
 export class Provider extends Component {
   state = {
     cards: [],
-    editToggle: false,
     dispatch: action => {
       this.setState(state => reducer(state, action));
     }

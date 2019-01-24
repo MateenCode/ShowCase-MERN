@@ -18,7 +18,7 @@ export default function CardItem(props) {
           <Row>
             <Col> {title} </Col>
             <Col>
-              <span>
+              <span onClick={props.toggle}>
                 <i className="far fa-edit float-right" />
               </span>
             </Col>
