@@ -29,14 +29,9 @@ hr {
 
 /* Card Section  */
 
-.card-group {
-  margin-bottom: 2%;
-  height: 16em;
-}
-
 .card {
   width: 24em;
-  border: 1px solid #000;
+  border: none;
 }
 
 .title {
@@ -73,10 +68,3 @@ span {
 }
 
 /* @ Media Query */
-
-@media screen and (max-width: 992px) {
-  .card {
-    height: 17em;
-    border: none;
-  }
-}

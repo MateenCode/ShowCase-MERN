@@ -18,16 +18,16 @@ export default function CardItem(props) {
           <Row>
             <Col> {title} </Col>
             <Col>
-              <span onClick={props.toggle}>
+              {/* <span onClick={props.toggle}>
                 <i className="far fa-edit float-right" />
-              </span>
+              </span> */}
             </Col>
           </Row>
         </CardTitle>
 
         <Row>
           <Col>
-            <CardImg src={image} />
+            <CardImg className="card-img" width="100%" src={image} />
           </Col>
           <Col>
             <CardText>{description}</CardText>
@@ -36,9 +36,9 @@ export default function CardItem(props) {
 
         <Row>
           <Col>
-            <span onClick={props.handleDelete}>
+            {/* <span onClick={props.handleDelete}>
               <i className="far fa-trash-alt text-danger fa-2x" />
-            </span>
+            </span> */}
           </Col>
           <Col>
             <div className="float-right">
