@@ -19,7 +19,7 @@ export default class CardList extends Component {
     return (
       <Consumer>
         {value => {
-          const { cards, dispatch } = value;
+          const { cards, dispatch, adminMode } = value;
           if (cards === undefined || cards.length === 0) {
             return (
               <Container style={{ textAlign: "center" }}>
@@ -34,6 +34,7 @@ export default class CardList extends Component {
                     <Col className="card-group" key={card._id}>
                       <CardItem
                         card={card}
+                        adminMode={adminMode}
                         handleDelete={this.handleDelete.bind(
                           this,
                           card._id,
