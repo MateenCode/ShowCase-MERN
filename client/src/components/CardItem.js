@@ -22,7 +22,9 @@ export default function CardItem(props) {
           </CardTitle>
           <Row>
             <Col>
-              <CardImg className="card-img" width="100%" src={image} />
+              <a href={liveLink} target="_blank">
+                <CardImg className="card-img" width="100%" src={image} />
+              </a>
             </Col>
             <Col>
               <CardText>{description}</CardText>
