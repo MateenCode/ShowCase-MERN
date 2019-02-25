@@ -36,18 +36,10 @@ router.get("/display", (req, res) => {
 // @desc    update card
 // @access  Public
 router.put("/update/:id", (req, res) => {
-  Card.findById(req.params.id).then(card => {
-    card
-      .update({
-        title: req.body.title,
-        image: req.body.image,
-        description: req.body.description,
-        github: req.body.title,
-        livelink: req.body.title
-      })
-      .then(card => res.json({ statue: true, card }))
-      .catch(err => res.json({ statue: false, err }));
-  });
+  const updateObject = req.body;
+  Card.update({ _id: req.params.id }, { $set: updateObject })
+    .then(card => res.json({ statue: true, card }))
+    .catch(err => res.json({ statue: false, err }));
 });
 
 // @route   DELETE api/delete
@@ -55,7 +47,7 @@ router.put("/update/:id", (req, res) => {
 // @access  Public
 router.delete("/delete/:id", (req, res) => {
   Card.findById(req.params.id)
-    .then(todo => todo.remove().then(() => res.json({ success: true })))
+    .then(card => card.remove().then(() => res.json({ success: true })))
     .catch(err => res.status(404).json({ success: false }));
 });
 
