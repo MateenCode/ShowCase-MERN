@@ -1,14 +1,16 @@
 import React, { Component } from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Container } from "reactstrap";
+import { Link } from "react-router-dom";
+import { Form, FormGroup, Label, Input, ModalFooter } from "reactstrap";
+import axios from "axios";
 
 export default class EditModal extends Component {
   state = {
-    title: "",
-    image: "",
-    description: "",
-    github: "",
-    liveLink: ""
+    title: undefined,
+    image: undefined,
+    description: undefined,
+    github: undefined,
+    liveLink: undefined
   };
 
   handleChange = e => {
@@ -17,81 +19,86 @@ export default class EditModal extends Component {
     });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSubmit = () => {
+    const { id } = this.props.match.params;
     const card = this.state;
-    this.props.handleUpdate(card);
-    this.setState({
-      title: "",
-      image: "",
-      description: "",
-      github: "",
-      liveLink: ""
-    });
+
+    axios
+      .put(`http://localhost:5000/api/update/${id}`, card)
+      .then(() => {
+        this.setState({
+          title: undefined,
+          image: undefined,
+          description: undefined,
+          github: undefined,
+          liveLink: undefined
+        });
+        this.props.history.push("/");
+      })
+      .then(() => {
+        window.location.reload();
+      });
   };
   render() {
     const { title, image, description, github, liveLink } = this.state;
     return (
-      <Modal isOpen={this.props.modal}>
-        <ModalHeader>Edit Project</ModalHeader>
-        <ModalBody>
-          <Form>
-            <FormGroup>
-              <Label>Title</Label>
-              <Input
-                name="title"
-                value={title}
-                onChange={this.handleChange}
-                placeholder="title..."
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label>Image</Label>
-              <Input
-                name="image"
-                value={image}
-                onChange={this.handleChange}
-                placeholder="URL..."
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label>Description</Label>
-              <Input
-                name="description"
-                value={description}
-                onChange={this.handleChange}
-                placeholder="description..."
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label>Github</Label>
-              <Input
-                name="github"
-                value={github}
-                onChange={this.handleChange}
-                placeholder="Github..."
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label>LiveLink</Label>
-              <Input
-                name="liveLink"
-                value={liveLink}
-                onChange={this.handleChange}
-                placeholder="live..."
-              />
-            </FormGroup>
-          </Form>
-        </ModalBody>
+      <Container className="w-50">
+        <Form onSubmit={this.handleSubmit}>
+          <FormGroup>
+            <Label>Title</Label>
+            <Input
+              name="title"
+              defaultValue={title}
+              onChange={this.handleChange}
+              placeholder="title..."
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Image</Label>
+            <Input
+              name="image"
+              defaultValue={image}
+              onChange={this.handleChange}
+              placeholder="URL..."
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Description</Label>
+            <Input
+              name="description"
+              defaultValue={description}
+              onChange={this.handleChange}
+              placeholder="description..."
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Github</Label>
+            <Input
+              name="github"
+              defaultValue={github}
+              onChange={this.handleChange}
+              placeholder="Github..."
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>LiveLink</Label>
+            <Input
+              name="liveLink"
+              defaultValue={liveLink}
+              onChange={this.handleChange}
+              placeholder="live..."
+            />
+          </FormGroup>
+        </Form>
         <ModalFooter>
           <Button color="primary" onClick={this.handleSubmit}>
-            Add Project
+            Edit Project
           </Button>
-          <Button onClick={this.props.toggle} color="danger">
-            Cancel
-          </Button>
+          <Link to="/" className="btn btn-danger">
+            Back
+          </Link>
         </ModalFooter>
-      </Modal>
+      </Container>
     );
   }
 }

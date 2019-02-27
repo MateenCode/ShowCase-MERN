@@ -7,12 +7,17 @@ import CardItem from "./CardItem";
 
 export default class CardList extends Component {
   handleDelete = (id, dispatch) => {
-    axios.delete(`/api/delete/${id}`).then(() =>
-      dispatch({
-        type: "delete",
-        payload: id
-      })
-    );
+    dispatch({
+      type: "delete",
+      payload: id
+    });
+    axios.delete(`/api/delete/${id}`);
+  };
+  handleUpdate = (id, card) => {
+    console.log(card);
+    axios.put(`/api/update/${id}`, {
+      card
+    });
   };
 
   render() {
@@ -35,6 +40,7 @@ export default class CardList extends Component {
                       <CardItem
                         card={card}
                         adminMode={adminMode}
+                        toggle={this.toggle}
                         handleDelete={this.handleDelete.bind(
                           this,
                           card._id,

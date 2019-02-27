@@ -17,16 +17,16 @@ export default class Navigation extends Component {
   };
 
   addCard = (dispatch, card) => {
+    dispatch({
+      type: "add",
+      payload: card
+    });
     axios.post("api/add", {
       title: card.title,
       image: card.image,
       description: card.description,
       github: card.github,
       liveLink: card.liveLink
-    });
-    dispatch({
-      type: "add",
-      payload: card
     });
     this.setState({
       modal: false

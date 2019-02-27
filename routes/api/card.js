@@ -36,8 +36,7 @@ router.get("/display", (req, res) => {
 // @desc    update card
 // @access  Public
 router.put("/update/:id", (req, res) => {
-  const updateObject = req.body;
-  Card.update({ _id: req.params.id }, { $set: updateObject })
+  Card.updateOne({ _id: req.params.id }, { $set: req.body })
     .then(card => res.json({ statue: true, card }))
     .catch(err => res.json({ statue: false, err }));
 });

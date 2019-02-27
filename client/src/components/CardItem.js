@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Card,
   CardImg,
@@ -10,7 +11,7 @@ import {
 } from "reactstrap";
 
 export default function CardItem(props) {
-  const { title, image, description, github, liveLink } = props.card;
+  const { title, image, description, github, liveLink, _id } = props.card;
   if (props.adminMode === false) {
     return (
       <Card className="card">
@@ -53,9 +54,9 @@ export default function CardItem(props) {
             <Row>
               <Col> {title} </Col>
               <Col>
-                <span onClick={props.toggle}>
+                <Link to={`/edit/${_id}`}>
                   <i className="far fa-edit float-right" />
-                </span>
+                </Link>
               </Col>
             </Row>
           </CardTitle>
