@@ -1,7 +1,7 @@
 {
-  "name": "reactexpress",
+  "name": "mateenshowcase",
   "version": "1.0.0",
-  "description": "Starter kit for creating React and Express apps",
+  "description": "showcase application to display my work",
   "main": "server.js",
   "scripts": {
     "client-install": "cd client && npm install",
