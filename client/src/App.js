@@ -9,18 +9,24 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import CardList from "./components/CardList";
 import Edit from "./components/modal/EditModal";
+import Particle from "./components/layout/Particle";
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Provider>
-          <Navbar />
-          <Header />
-          <Route path="/" component={CardList} exact />
-          <Route path="/edit/:id" component={Edit} />
-          <Footer />
-        </Provider>
+        <React.Fragment>
+          <React.Fragment>
+            <Provider>
+              <Particle />
+              <Navbar />
+              <Header />
+              <Route path="/" component={CardList} exact />
+              <Route path="/edit/:id" component={Edit} />
+              <Footer />
+            </Provider>
+          </React.Fragment>
+        </React.Fragment>
       </BrowserRouter>
     );
   }
