@@ -1,6 +1,6 @@
 # Showcase
 
-Projects showcase & Management application created using mongo, express, node, react with full CRUD ability.
+Projects showcase & Management application created using mongo, express, node, react with full CRUD ability created to display my work.
 
 # ScreenShot
 
