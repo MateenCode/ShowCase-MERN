@@ -18,8 +18,11 @@ export default class Navigation extends Component {
 
   addCard = (dispatch, card) => {
     dispatch({
-      type: "add",
+      type: "ADD_CARD",
       payload: card
+    });
+    this.setState({
+      modal: false
     });
     axios.post("api/add", {
       title: card.title,
@@ -28,17 +31,14 @@ export default class Navigation extends Component {
       github: card.github,
       liveLink: card.liveLink
     });
-    this.setState({
-      modal: false
-    });
   };
 
   render() {
     return (
       <Consumer>
         {value => {
-          const { dispatch, adminMode } = value;
-          if (adminMode === false) {
+          const { dispatch, admin } = value;
+          if (admin === false) {
             return (
               <React.Fragment>
                 <Navbar expand="xs">

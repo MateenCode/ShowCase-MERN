@@ -4,25 +4,28 @@ import axios from "axios";
 const Context = React.createContext();
 
 const reducer = (state, action) => {
-  if (action.type === "add") {
-    return {
-      cards: [action.payload, ...state.cards]
-    };
-  } else if (action.type === "delete") {
-    return {
-      cards: state.cards.filter(card => card._id !== action.payload)
-    };
-  } else if (action.type === "toggle_admin") {
-    return {
-      adminMode: !state.adminMode
-    };
+  switch (action.type) {
+    case "ADD_CARD":
+      return {
+        cards: [action.payload, ...state.cards]
+      };
+    case "DELETE_CARD":
+      return {
+        cards: state.cards.filter(card => card._id !== action.payload)
+      };
+    case "TOGGLE_ADMIN":
+      return {
+        admin: !state.admin
+      };
+    default:
+      return state;
   }
 };
 
 export class Provider extends Component {
   state = {
     cards: [],
-    adminMode: false,
+    admin: false,
     dispatch: action => {
       this.setState(state => reducer(state, action));
     }

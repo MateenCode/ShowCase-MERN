@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Container } from "reactstrap";
-import { Link } from "react-router-dom";
 import { Form, FormGroup, Label, Input, ModalFooter } from "reactstrap";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class EditModal extends Component {
@@ -42,7 +42,7 @@ export default class EditModal extends Component {
   render() {
     const { title, image, description, github, liveLink } = this.state;
     return (
-      <Container className="w-50">
+      <Container className="edit w-50">
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
             <Label>Title</Label>

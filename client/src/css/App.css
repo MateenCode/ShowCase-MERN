@@ -62,10 +62,16 @@ span {
   color: #000;
 }
 
+.edit {
+  position: relative;
+}
+
 /* Footer Section  */
 .tool-icon {
   float: right;
   margin: 0.6em;
+  cursor: pointer;
+  position: relative;
 }
 
 /* @ Media Query */
