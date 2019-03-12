@@ -51,6 +51,7 @@ export default class CardList extends Component {
                   {cards.map(card => (
                     <Col className="card-group" key={card._id}>
                       <CardItem
+                        className="handle"
                         card={card}
                         admin={admin}
                         toggle={this.toggle}

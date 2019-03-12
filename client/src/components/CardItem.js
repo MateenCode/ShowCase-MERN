@@ -46,7 +46,7 @@ export default function CardItem(props) {
       </CardBody>
     </Card>
   ) : (
-    <Card className="card">
+    <Card className="handle card">
       <CardBody>
         <CardTitle className="title">
           <Row>
