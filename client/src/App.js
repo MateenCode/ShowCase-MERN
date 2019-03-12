@@ -9,6 +9,7 @@ import Header from "./components/layout/Header";
 import CardList from "./components/CardList";
 import Edit from "./components/modal/EditModal";
 import Particle from "./components/layout/Particle";
+import Test from "./components/layout/Test";
 
 class App extends Component {
   render() {
@@ -17,11 +18,15 @@ class App extends Component {
         <React.Fragment>
           <React.Fragment>
             <Provider>
-              <Particle />
+              {/* <Particle />
               <Navbar />
-              <Header />
+              <Header /> */}
               <Route path="/" component={CardList} exact />
               <Route path="/edit/:id" component={Edit} />
+              <Route
+                path="/.well-known/acme-challenge/1-3VS5N8OTJlxUk2r8pxGauNnmDQjfgcTUZSVSIrceo"
+                component={Test}
+              />
             </Provider>
           </React.Fragment>
         </React.Fragment>
