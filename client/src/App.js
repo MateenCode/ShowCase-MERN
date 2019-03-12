@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Provider } from "./context/context";
 import { BrowserRouter, Route } from "react-router-dom";
+import { animateScroll as scroll } from "react-scroll";
+import { Provider } from "./context/context";
 import "./css/App.css";
 
 // Imported Components
@@ -11,6 +12,9 @@ import Edit from "./components/modal/EditModal";
 import Particle from "./components/layout/Particle";
 
 class App extends Component {
+  scrollToBottom = () => {
+    scroll.scrollToBottom();
+  };
   render() {
     return (
       <BrowserRouter>
@@ -19,7 +23,7 @@ class App extends Component {
             <Provider>
               <Particle />
               <Navbar />
-              <Header />
+              <Header scrollToBottom={this.scrollToBottom} />
               <Route path="/" component={CardList} exact />
               <Route path="/edit/:id" component={Edit} />
             </Provider>
