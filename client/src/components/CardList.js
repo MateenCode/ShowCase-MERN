@@ -26,6 +26,10 @@ export default class CardList extends Component {
     scroll.scrollToTop();
   };
 
+  scrollToBottom = () => {
+    scroll.scrollToBottom();
+  };
+
   render() {
     return (
       <Consumer>
@@ -38,6 +42,10 @@ export default class CardList extends Component {
             </Container>
           ) : (
             <React.Fragment>
+              <i
+                className="anchor_key far fa-hand-point-down float-right pr-4"
+                onClick={this.scrollToBottom}
+              />
               <Container>
                 <Row>
                   {cards.map(card => (
