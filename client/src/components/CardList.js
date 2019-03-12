@@ -42,7 +42,7 @@ export default class CardList extends Component {
             </Container>
           ) : (
             <React.Fragment>
-              <i
+              <span
                 className="anchor_key far fa-hand-point-down float-right pr-4"
                 onClick={this.scrollToBottom}
               />
