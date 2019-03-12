@@ -9,6 +9,11 @@ import CardItem from "./CardItem";
 import Footer from "./layout/Footer";
 
 export default class CardList extends Component {
+  state = {
+    firstCard: 0,
+    secondCard: 0
+  };
+
   adminToggle = dispatch => {
     dispatch({
       type: "TOGGLE_ADMIN"
@@ -20,6 +25,27 @@ export default class CardList extends Component {
       payload: id
     });
     axios.delete(`/api/delete/${id}`);
+  };
+
+  handleDrop = dispatch => {
+    const firstId = this.state.firstCard;
+    const secondId = this.state.secondCard;
+    dispatch({
+      type: "UPDATE_ID",
+      payload: { firstId, secondId }
+    });
+  };
+
+  handleDrag = id => {
+    this.setState({
+      firstCard: id
+    });
+  };
+
+  handleDragEnter = id => {
+    this.setState({
+      secondCard: id
+    });
   };
 
   scrollToTop = () => {
@@ -35,7 +61,6 @@ export default class CardList extends Component {
       <Consumer>
         {value => {
           const { cards, dispatch, admin } = value;
-
           return cards === undefined || cards.length === 0 ? (
             <Container style={{ textAlign: "center" }}>
               <Spinner color="dark" />
@@ -48,21 +73,29 @@ export default class CardList extends Component {
               />
               <Container>
                 <Row>
-                  {cards.map(card => (
-                    <Col className="card-group" key={card._id}>
-                      <CardItem
-                        className="handle"
-                        card={card}
-                        admin={admin}
-                        toggle={this.toggle}
-                        handleDelete={this.handleDelete.bind(
-                          this,
-                          card._id,
-                          dispatch
-                        )}
-                      />
-                    </Col>
-                  ))}
+                  {cards
+                    .sort((a, b) => a.id - b.id)
+                    .map(card => (
+                      <Col className="card-group" key={card._id}>
+                        <CardItem
+                          className="handle"
+                          card={card}
+                          admin={admin}
+                          toggle={this.toggle}
+                          handleDrop={this.handleDrop.bind(this, dispatch)}
+                          handleDrag={this.handleDrag.bind(this, card.id)}
+                          handleDragEnter={this.handleDragEnter.bind(
+                            this,
+                            card.id
+                          )}
+                          handleDelete={this.handleDelete.bind(
+                            this,
+                            card._id,
+                            dispatch
+                          )}
+                        />
+                      </Col>
+                    ))}
                 </Row>
               </Container>
               <span
