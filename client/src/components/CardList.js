@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Spinner, Container, Row, Col } from "reactstrap";
+import { animateScroll as scroll } from "react-scroll";
 import { Consumer } from "../context/context";
 import axios from "axios";
 
@@ -19,6 +20,10 @@ export default class CardList extends Component {
       payload: id
     });
     axios.delete(`/api/delete/${id}`);
+  };
+
+  scrollToTop = () => {
+    scroll.scrollToTop();
   };
 
   render() {
@@ -51,6 +56,10 @@ export default class CardList extends Component {
                   ))}
                 </Row>
               </Container>
+              <span
+                onClick={this.scrollToTop}
+                className="anchor_key far fa-hand-point-up text-right pb-3 pr-4"
+              />
               <Footer adminToggle={this.adminToggle.bind(this, dispatch)} />
             </React.Fragment>
           );

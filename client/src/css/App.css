@@ -66,10 +66,16 @@ span {
   position: relative;
 }
 
+.anchor_key {
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
 /* Footer Section  */
 .tool-icon {
   float: right;
-  margin: 0.6em;
+  margin: 0.5em;
   cursor: pointer;
   position: relative;
 }
