@@ -36,18 +36,40 @@ router.get("/display", (req, res) => {
 // @desc    update card
 // @access  Public
 router.put("/update/:id", (req, res) => {
-  Card.updateOne({ _id: req.params.id }, { $set: req.body })
+  Card.updateOne({ _id: req.params.id }, { $set: req.body }, { new: true })
     .then(card => res.json({ statue: true, card }))
     .catch(err => res.json({ statue: false, err }));
+});
+
+// @route   PATCH api/swap
+// @desc    replace date
+// @access  Public
+router.put("/swap", (req, res) => {
+  const firstDate = req.body.firstDate;
+  const secondDate = req.body.secondDate;
+
+  console.log(firstDate, secondDate);
+
+  // Card.find()
+  //   .then(cards => {
+  //     cards.forEach(card => {
+  //       if (card.id === firstDate) {
+  //         return card.updateOne({ $set: { date: secondDate } });
+  //       } else if (card.id === secondDate) {
+  //         return card.updateOne({ $set: { date: firstDate } });
+  //       } else {
+  //         return card;
+  //       }
+  //     });
+  //   })
+  //   .then(() => console.log("working"));
 });
 
 // @route   DELETE api/delete
 // @desc    delete card
 // @access  Public
 router.delete("/delete/:id", (req, res) => {
-  Card.findById(req.params.id)
-    .then(card => card.remove().then(() => res.json({ success: true })))
-    .catch(err => res.status(404).json({ success: false }));
+  Card.findById(req.params.id);
 });
 
 module.exports = router;

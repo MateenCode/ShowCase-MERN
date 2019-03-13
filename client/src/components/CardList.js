@@ -10,8 +10,8 @@ import Footer from "./layout/Footer";
 
 export default class CardList extends Component {
   state = {
-    firstDate: 0,
-    secondDate: 0
+    firstDate: undefined,
+    secondDate: undefined
   };
 
   adminToggle = dispatch => {
@@ -28,24 +28,25 @@ export default class CardList extends Component {
   };
 
   handleDrop = dispatch => {
-    const firstDate = this.state.firstCard;
-    const secondDate = this.state.secondCard;
-    console.log(firstDate, secondDate);
+    const firstDate = this.state.firstDate;
+    const secondDate = this.state.secondDate;
     dispatch({
       type: "REPLACE_DATE",
       payload: { firstDate, secondDate }
     });
+
+    axios.put("http://localhost:5000/api/swap", { firstDate, secondDate });
   };
 
-  handleDrag = id => {
+  handleDrag = date => {
     this.setState({
-      firstCard: id
+      firstDate: date
     });
   };
 
-  handleDragEnter = id => {
+  handleDragEnter = date => {
     this.setState({
-      secondCard: id
+      secondDate: date
     });
   };
 
