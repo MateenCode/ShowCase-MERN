@@ -51,6 +51,21 @@ router.put("/swap", (req, res) => {
   console.log(firstDate, secondDate);
 
   // Card.find()
+  //   .cursor()
+  //   .on("data", function(card) {
+  //     if (card.date === firstDate) {
+  //       card.set("date", secondDate);
+  //     } else if (card.date === secondDate) {
+  //       card.set("date", firstDate);
+  //     }
+
+  //     card.save(function(err) {});
+  //   })
+  //   .on("end", function() {
+  //     console.log("Done!");
+  //   });
+
+  // Card.find()
   //   .then(cards => {
   //     cards.forEach(card => {
   //       if (card.id === firstDate) {
@@ -69,7 +84,9 @@ router.put("/swap", (req, res) => {
 // @desc    delete card
 // @access  Public
 router.delete("/delete/:id", (req, res) => {
-  Card.findById(req.params.id);
+  Card.findById(req.params.id)
+    .then(card => card.remove().then(() => res.json({ success: true })))
+    .catch(err => res.status(404).json({ success: false }));
 });
 
 module.exports = router;
