@@ -10,8 +10,8 @@ import Footer from "./layout/Footer";
 
 export default class CardList extends Component {
   state = {
-    firstCard: 0,
-    secondCard: 0
+    firstDate: 0,
+    secondDate: 0
   };
 
   adminToggle = dispatch => {
@@ -28,11 +28,12 @@ export default class CardList extends Component {
   };
 
   handleDrop = dispatch => {
-    const firstId = this.state.firstCard;
-    const secondId = this.state.secondCard;
+    const firstDate = this.state.firstCard;
+    const secondDate = this.state.secondCard;
+    console.log(firstDate, secondDate);
     dispatch({
-      type: "UPDATE_ID",
-      payload: { firstId, secondId }
+      type: "REPLACE_DATE",
+      payload: { firstDate, secondDate }
     });
   };
 
@@ -74,7 +75,7 @@ export default class CardList extends Component {
               <Container>
                 <Row>
                   {cards
-                    .sort((a, b) => a.id - b.id)
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
                     .map(card => (
                       <Col className="card-group" key={card._id}>
                         <CardItem
@@ -83,10 +84,10 @@ export default class CardList extends Component {
                           admin={admin}
                           toggle={this.toggle}
                           handleDrop={this.handleDrop.bind(this, dispatch)}
-                          handleDrag={this.handleDrag.bind(this, card.id)}
+                          handleDrag={this.handleDrag.bind(this, card.date)}
                           handleDragEnter={this.handleDragEnter.bind(
                             this,
-                            card.id
+                            card.date
                           )}
                           handleDelete={this.handleDelete.bind(
                             this,

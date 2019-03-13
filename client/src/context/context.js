@@ -17,18 +17,18 @@ const reducer = (state, action) => {
       return {
         admin: !state.admin
       };
-    case "UPDATE_ID":
+    case "REPLACE_DATE":
       return {
         cards: state.cards.map(card => {
-          if (card.id === action.payload.firstId) {
+          if (card.date === action.payload.firstDate) {
             return {
               ...card,
-              id: action.payload.secondId
+              date: action.payload.secondDate
             };
-          } else if (card.id === action.payload.secondId) {
+          } else if (card.date === action.payload.secondDate) {
             return {
               ...card,
-              id: action.payload.firstId
+              date: action.payload.firstDate
             };
           } else {
             return card;
@@ -51,13 +51,7 @@ export class Provider extends Component {
 
   componentDidMount() {
     axios.get("/api/display").then(res => {
-      const value = res.data.map((card, index) => {
-        return {
-          ...card,
-          id: index
-        };
-      });
-
+      const value = res.data;
       this.setState(state => ({
         cards: value
       }));
