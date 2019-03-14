@@ -46,15 +46,12 @@ router.put("/update/:id", (req, res) => {
     .catch(err => res.json({ statue: false, err }));
 });
 
-// @route   PATCH api/swap
-// @desc    replace date
+// @route   PUT api/swap
+// @desc    replace ID
 // @access  Public
 router.put("/swap", (req, res) => {
   const firstID = req.body.firstID;
   const secondID = req.body.secondID;
-
-  console.log(firstID, secondID);
-
   Card.find()
     .cursor()
     .on("data", function(card) {

@@ -20,15 +20,15 @@ const reducer = (state, action) => {
     case "REPLACE_DATE":
       return {
         cards: state.cards.map(card => {
-          if (card.date === action.payload.firstDate) {
+          if (card.id === action.payload.firstID) {
             return {
               ...card,
-              date: action.payload.secondDate
+              id: action.payload.secondID
             };
-          } else if (card.date === action.payload.secondDate) {
+          } else if (card.id === action.payload.secondID) {
             return {
               ...card,
-              date: action.payload.firstDate
+              id: action.payload.firstID
             };
           } else {
             return card;
