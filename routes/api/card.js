@@ -8,18 +8,23 @@ const Card = require("../../models/Card");
 // @desc    add card
 // @access  Public
 router.post("/add", (req, res) => {
-  const newCard = new Card({
-    title: req.body.title,
-    image: req.body.image,
-    description: req.body.description,
-    github: req.body.github,
-    liveLink: req.body.liveLink
-  });
+  Card.find().then(cards => {
+    card = cards[cards.length - 1];
 
-  newCard
-    .save()
-    .then(todo => res.json({ statue: true, todo }))
-    .catch(err => res.json({ statue: false, err }));
+    const newCard = new Card({
+      id: card.id + 1,
+      title: req.body.title,
+      image: req.body.image,
+      description: req.body.description,
+      github: req.body.github,
+      liveLink: req.body.liveLink
+    });
+
+    newCard
+      .save()
+      .then(() => console.log({ statue: true }))
+      .catch(err => console.log({ statue: false, err }));
+  });
 });
 
 // @route   GET api/display
@@ -27,7 +32,7 @@ router.post("/add", (req, res) => {
 // @access  Public
 router.get("/display", (req, res) => {
   Card.find()
-    .sort({ date: -1 })
+    .sort({ id: -1 })
     .then(card => res.json(card))
     .catch(err => res.json({ statue: false, err }));
 });
@@ -45,39 +50,25 @@ router.put("/update/:id", (req, res) => {
 // @desc    replace date
 // @access  Public
 router.put("/swap", (req, res) => {
-  const firstDate = req.body.firstDate;
-  const secondDate = req.body.secondDate;
+  const firstID = req.body.firstID;
+  const secondID = req.body.secondID;
 
-  console.log(firstDate, secondDate);
+  console.log(firstID, secondID);
 
-  // Card.find()
-  //   .cursor()
-  //   .on("data", function(card) {
-  //     if (card.date === firstDate) {
-  //       card.set("date", secondDate);
-  //     } else if (card.date === secondDate) {
-  //       card.set("date", firstDate);
-  //     }
+  Card.find()
+    .cursor()
+    .on("data", function(card) {
+      if (card.id === firstID) {
+        card.set("id", secondID);
+      } else if (card.id === secondID) {
+        card.set("id", firstID);
+      }
 
-  //     card.save(function(err) {});
-  //   })
-  //   .on("end", function() {
-  //     console.log("Done!");
-  //   });
-
-  // Card.find()
-  //   .then(cards => {
-  //     cards.forEach(card => {
-  //       if (card.id === firstDate) {
-  //         return card.updateOne({ $set: { date: secondDate } });
-  //       } else if (card.id === secondDate) {
-  //         return card.updateOne({ $set: { date: firstDate } });
-  //       } else {
-  //         return card;
-  //       }
-  //     });
-  //   })
-  //   .then(() => console.log("working"));
+      card.save(function(err) {});
+    })
+    .on("end", function() {
+      console.log("Done!");
+    });
 });
 
 // @route   DELETE api/delete

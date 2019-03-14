@@ -77,7 +77,7 @@ export default function CardItem(props) {
         <Row>
           <Col>
             <span onClick={props.handleDelete}>
-              <i className="far fa-trash-alt text-danger fa-2x" />
+              <i className="far fa-trash-alt text-danger fa-2x pt-2" />
             </span>
           </Col>
           <Col>

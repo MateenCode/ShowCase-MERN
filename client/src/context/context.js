@@ -43,18 +43,18 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   state = {
     cards: [],
-    admin: false,
+    admin: true,
     dispatch: action => {
       this.setState(state => reducer(state, action));
     }
   };
 
   componentDidMount() {
-    axios.get("/api/display").then(res => {
+    axios.get("http://localhost:5000/api/display").then(res => {
       const value = res.data;
-      this.setState(state => ({
+      this.setState({
         cards: value
-      }));
+      });
     });
   }
 

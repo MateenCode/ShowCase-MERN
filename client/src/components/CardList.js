@@ -10,8 +10,8 @@ import Footer from "./layout/Footer";
 
 export default class CardList extends Component {
   state = {
-    firstDate: undefined,
-    secondDate: undefined
+    firstID: undefined,
+    secondID: undefined
   };
 
   adminToggle = dispatch => {
@@ -28,25 +28,31 @@ export default class CardList extends Component {
   };
 
   handleDrop = dispatch => {
-    const firstDate = this.state.firstDate;
-    const secondDate = this.state.secondDate;
+    const firstID = this.state.firstID;
+    const secondID = this.state.secondID;
+    console.log(firstID, secondID);
     dispatch({
       type: "REPLACE_DATE",
-      payload: { firstDate, secondDate }
+      payload: { firstID, secondID }
     });
 
-    axios.put("http://localhost:5000/api/swap", { firstDate, secondDate });
-  };
+    axios.put("http://localhost:5000/api/swap", { firstID, secondID });
 
-  handleDrag = date => {
     this.setState({
-      firstDate: date
+      firstID: undefined,
+      secondID: undefined
     });
   };
 
-  handleDragEnter = date => {
+  handleDrag = id => {
     this.setState({
-      secondDate: date
+      firstID: id
+    });
+  };
+
+  handleDragEnter = id => {
+    this.setState({
+      secondID: id
     });
   };
 
@@ -76,7 +82,7 @@ export default class CardList extends Component {
               <Container>
                 <Row>
                   {cards
-                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .sort((a, b) => b.id - a.id)
                     .map(card => (
                       <Col className="card-group" key={card._id}>
                         <CardItem
@@ -85,10 +91,10 @@ export default class CardList extends Component {
                           admin={admin}
                           toggle={this.toggle}
                           handleDrop={this.handleDrop.bind(this, dispatch)}
-                          handleDrag={this.handleDrag.bind(this, card.date)}
+                          handleDrag={this.handleDrag.bind(this, card.id)}
                           handleDragEnter={this.handleDragEnter.bind(
                             this,
-                            card.date
+                            card.id
                           )}
                           handleDelete={this.handleDelete.bind(
                             this,

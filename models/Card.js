@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const CardSchema = new Schema({
+  id: {
+    type: Number,
+    default: 0
+  },
   title: {
     type: String,
     required: true
