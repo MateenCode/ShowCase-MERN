@@ -43,7 +43,7 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   state = {
     cards: [],
-    admin: true,
+    admin: false,
     dispatch: action => {
       this.setState(state => reducer(state, action));
     }
