@@ -52,7 +52,13 @@ export default function CardItem(props) {
       </CardBody>
     </Card>
   ) : (
-    <Card className="handle card" onDragStart={props.dragStart}>
+    <Card
+      className="card"
+      draggable="true"
+      onDragStart={props.handleDrag}
+      onDragEnd={props.handleDrop}
+      onDragEnter={props.handleDragEnter}
+    >
       <CardBody>
         <CardTitle className="title">
           <Row>
