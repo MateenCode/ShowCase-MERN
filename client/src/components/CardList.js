@@ -36,7 +36,7 @@ export default class CardList extends Component {
       payload: { firstID, secondID }
     });
 
-    axios.put("http://localhost:5000/api/swap", { firstID, secondID });
+    axios.put("/api/swap", { firstID, secondID });
 
     this.setState({
       firstID: undefined,

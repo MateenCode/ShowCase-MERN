@@ -50,7 +50,7 @@ export class Provider extends Component {
   };
 
   componentDidMount() {
-    axios.get("http://localhost:5000/api/display").then(res => {
+    axios.get("/api/display").then(res => {
       const value = res.data;
       this.setState({
         cards: value

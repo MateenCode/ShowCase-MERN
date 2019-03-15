@@ -24,7 +24,7 @@ export default class EditModal extends Component {
     const card = this.state;
 
     axios
-      .put(`http://localhost:5000/api/update/${id}`, card)
+      .put(`/api/update/${id}`, card)
       .then(() => {
         this.setState({
           title: undefined,
