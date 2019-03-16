@@ -14,13 +14,7 @@ export default function CardItem(props) {
   const { title, image, description, github, liveLink, _id } = props.card;
 
   return props.admin === false ? (
-    <Card
-      className="card"
-      draggable="true"
-      onDragStart={props.handleDrag}
-      onDragEnd={props.handleDrop}
-      onDragEnter={props.handleDragEnter}
-    >
+    <Card className="card">
       <CardBody>
         <CardTitle className="title">
           <Row>
