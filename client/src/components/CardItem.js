@@ -33,7 +33,7 @@ export default function CardItem(props) {
         </Row>
         <Row>
           <Col>
-            <div className="float-right">
+            <div className="float-right mt-2">
               <a href={github} target="_blank" className="text-dark">
                 <i className="fab fa-github fa-2x mr-3 " />
               </a>
@@ -81,7 +81,7 @@ export default function CardItem(props) {
             </span>
           </Col>
           <Col>
-            <div className="float-right">
+            <div className="float-right mt-2">
               <a href={github} target="_blank" className="text-dark">
                 <i className="fab fa-github fa-2x mr-3 " />
               </a>
