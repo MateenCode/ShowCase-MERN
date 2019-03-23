@@ -76,6 +76,15 @@ span {
 .fa-angry {
   font-size: 3em;
 }
+.error {
+  cursor: pointer;
+}
+.fa-times {
+  font-size: 0.8em;
+}
+.fa-times:hover {
+  color: black !important;
+}
 
 /* Footer Section  */
 .tool-icon {

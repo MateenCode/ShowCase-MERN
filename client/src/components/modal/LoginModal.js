@@ -15,6 +15,12 @@ export default class LoginModal extends Component {
     });
   };
 
+  removeErr = () => {
+    this.setState({
+      error: undefined
+    });
+  };
+
   handleSubmit = (dispatch, e) => {
     e.preventDefault();
     if (this.state.password === "password") {
@@ -42,11 +48,14 @@ export default class LoginModal extends Component {
         {value => {
           const { dispatch } = value;
           return (
-            <Modal isOpen={modal} toggle={toggle}>
+            <Modal isOpen={modal} toggle={toggle.bind()}>
               <ModalHeader toggle={toggle}>Admin Login</ModalHeader>
               <ModalBody className="text-center">
                 {this.state.error && (
-                  <p className="text-danger">{this.state.error}</p>
+                  <span className="error" onClick={this.removeErr}>
+                    <span className="text-danger pr-3">{this.state.error}</span>
+                    <i className="text-muted fas fa-times" />
+                  </span>
                 )}
                 <h5>You're not from around here, are you?</h5>
                 <i className="far fa-angry" />
