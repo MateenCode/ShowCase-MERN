@@ -61,7 +61,7 @@ router.put("/swap", (req, res) => {
         card.set("id", firstID);
       }
 
-      card.save(function(err) {});
+      card.save(err => console.log(err));
     })
     .on("end", function() {
       console.log("Done!");
