@@ -16,16 +16,16 @@ export default class CardList extends Component {
     modal: false
   };
 
-  toggle = () => {
-    this.setState(prevState => ({
-      modal: !prevState.modal
-    }));
-  };
-
-  adminToggle = () => {
-    this.setState(prevState => ({
-      modal: !prevState.modal
-    }));
+  toggle = (dispatch, admin) => {
+    if (admin) {
+      dispatch({
+        type: "TOGGLE_ADMIN"
+      });
+    } else {
+      this.setState(prevState => ({
+        modal: !prevState.modal
+      }));
+    }
   };
 
   handleDelete = (id, dispatch) => {
@@ -39,7 +39,6 @@ export default class CardList extends Component {
   handleDrop = dispatch => {
     const firstID = this.state.firstID;
     const secondID = this.state.secondID;
-    console.log(firstID, secondID);
     dispatch({
       type: "REPLACE_DATE",
       payload: { firstID, secondID }
@@ -89,10 +88,7 @@ export default class CardList extends Component {
                 onClick={this.scrollToBottom}
               />
               <Container>
-                <LoginModal
-                  modal={this.state.modal}
-                  adminToggle={this.adminToggle}
-                />
+                <LoginModal modal={this.state.modal} toggle={this.toggle} />
                 <Row>
                   {cards
                     .sort((a, b) => b.id - a.id)
@@ -123,7 +119,7 @@ export default class CardList extends Component {
                 onClick={this.scrollToTop}
                 className="anchor_key far fa-hand-point-up text-right pb-3 pr-4"
               />
-              <Footer toggle={this.toggle} />
+              <Footer toggle={this.toggle.bind(this, dispatch, admin)} />
             </React.Fragment>
           );
         }}
