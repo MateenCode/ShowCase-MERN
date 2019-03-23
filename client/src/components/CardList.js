@@ -6,19 +6,28 @@ import axios from "axios";
 
 // components
 import CardItem from "./CardItem";
+import LoginModal from "./modal/LoginModal";
 import Footer from "./layout/Footer";
 
 export default class CardList extends Component {
   state = {
     firstID: undefined,
-    secondID: undefined
+    secondID: undefined,
+    modal: false
   };
 
-  adminToggle = dispatch => {
-    dispatch({
-      type: "TOGGLE_ADMIN"
-    });
+  toggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
   };
+
+  adminToggle = () => {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  };
+
   handleDelete = (id, dispatch) => {
     dispatch({
       type: "DELETE_CARD",
@@ -80,6 +89,10 @@ export default class CardList extends Component {
                 onClick={this.scrollToBottom}
               />
               <Container>
+                <LoginModal
+                  modal={this.state.modal}
+                  adminToggle={this.adminToggle}
+                />
                 <Row>
                   {cards
                     .sort((a, b) => b.id - a.id)
@@ -110,7 +123,7 @@ export default class CardList extends Component {
                 onClick={this.scrollToTop}
                 className="anchor_key far fa-hand-point-up text-right pb-3 pr-4"
               />
-              <Footer adminToggle={this.adminToggle.bind(this, dispatch)} />
+              <Footer toggle={this.toggle} />
             </React.Fragment>
           );
         }}

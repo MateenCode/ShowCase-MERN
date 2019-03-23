@@ -72,6 +72,11 @@ span {
   display: block;
 }
 
+/* Login Modal  */
+.fa-angry {
+  font-size: 3em;
+}
+
 /* Footer Section  */
 .tool-icon {
   float: right;
